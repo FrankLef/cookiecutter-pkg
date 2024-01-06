@@ -47,10 +47,36 @@ and **make the new folder the working directory**.
 
 ### Step 2 Manage the dependencies with `poetry`
 
+#### Installation
+
+**Very important:** Make sure the poetry version used is at least 1.7. Verify
+with
+
+    poetry --version.
+
+Also, in case of bug verify which environment and python version `poetry` is
+using. Usually, different environments used by different python version
+create problems with `poetry``.
+
+To debug poetry you can use
+
+    poetry debug info
+
+and to see the list of environment available
+
+    poetry env list
+
 Run `poetry shell` to open the poetry shell and avoid having to always add
 `poetry run`in front of all commands
 
     poetry shell
+
+Sometimes, especially when reusing a folder that had been used as a project
+before, the old environment is still used. To delete the old environment use
+
+    poetry env remove <python>
+
+#### Usage
 
 Run the `make` command `poetry_update` so that the following `poetry` command
 will run
@@ -63,23 +89,13 @@ These steps are encoded in the Makefile and can be run as follows
 
     make poetry_update
 
-Sometimes, especially when reusing a folder that had been used as a project
-before, the old environment is still used. To see the environment curently
-opened by `poetry` use this
-
-    poetry env list
-
-To delete the old environment use this command
-
-    poetry env remove <python>
-
 ### Step 3 Setup the new `.git`
 
 #### Create repo in `github`
 
 First create the new repo in github
 
-* **Give the repo the exact same name as the project**. That is keep the
+* **Give the repo the exact same name as the package**. That is keep the
 underscore in the name when there one. i.e. flproj_todo is also flproj_todo
 in github.
 * Don't create `README`, `.gitignore` and `LICENSE` with the new repo they
@@ -91,7 +107,7 @@ Then initialize git using
 
     make git_init
 
-### Step 4 Add the ignored directories
+### Step 4 Add the ignored directories (optional for packages)
 
 Some directories, such as the `data/`, are included in `.gitignore` and therefoer
 ignored by the cookicutter which is coming from `git`. Run `make` to add these
