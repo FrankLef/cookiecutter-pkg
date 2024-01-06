@@ -1,7 +1,7 @@
 {
-  "project_name": "todo",
-  "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '_') }}",
-  "__title_name": "{{cookiecutter.project_name}}.replace('-', ' ').replace('_', ' ').title()",
+  "package_name": "todo",
+  "__package_slug": "{{cookiecutter.__package_name.lower().replace(' ', '_') }}",
+  "__title_name": "{{cookiecutter.__package_name}}.replace('-', ' ').replace('_', ' ').title()",
   "description": "A short description of the data science project.",
   "author": "Fran\u00E7ois Lefebvre",
   "email": "flefebvre01@hotmail.com",
