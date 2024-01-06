@@ -7,7 +7,6 @@ license = "{{cookiecutter.license}}"
 readme = "README.md"
 homepage = "{{cookiecutter.git_repo}}"
 repository = "{{cookiecutter.git_repo}}"
-documentation = "TBA"
 classifiers = [
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
@@ -21,7 +20,7 @@ Changelog = "{{cookiecutter.__changelog}}"
 
 [tool.poetry.dependencies]
 # python changed to allow install of scipy
-python = ">=3.10.6,<3.12"
+python = "^3.10.6"
 requests = "^2.28.1"
 pandas = "^1.5.0"
 numpy = "^1.23.3"
@@ -44,7 +43,7 @@ scipy = "^1.10.1"
 numba = "~0.56.0"
 pyod = "^1.0.7"
 seaborn = "^0.12.2"
-prefect = "^2.82"
+prefect = "^2.14"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^5.0.4"
