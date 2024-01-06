@@ -1,4 +1,4 @@
-# cookiecutter-proj
+# cookiecutter-pkg
 
 <!-- badges: start -->
 [![Lifecycle:
@@ -34,8 +34,8 @@ repo name, project name, etc.
 
 ### Step 1 Setup the project structure with `cookiecutter`
 
-Change to the parent location where you want the project to be created.
-For example if your project is called `project-proj` in the `parent` folder,
+Change to the parent location where you want the package to be created.
+For example if your package is called `pkg-proj` in the `parent` folder,
 then move to `parent` first
 
     cd ../parent
@@ -46,7 +46,7 @@ verify that `cookiecutter` is properly installed by calling its version
 
 then generate the project
 
-    cookiecutter https://github.com/FrankLef/cookiecutter-proj.git
+    cookiecutter https://github.com/FrankLef/cookiecutter-pkg.git
 
 and **make the new folder the working directory**.
 
