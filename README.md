@@ -171,9 +171,25 @@ this command wich runs the tests from the `tests` directory.
 
     pytest
 
+## Install package and use the local library
+
+To install the package, run the following in the **windows environment**, not
+the virtual environment created by `poetry`. Otherwise the project calling this
+library will not be able to import it.
+
+To validate the package is in the windows environment run
+
+    pip list
+
+Also you need to modify the project's `pyproject.toml` file to allow `poerty`
+touse it in its environnment as follow
+
+    [tool.poetry.dev-dependencies]
+    igclib = {path = "../path/package", develop = true}
+
 ## Setup notes
 
-When using the configurations recommended usually as best practices problems
+Some configurations needed to be changed when problems
 were encountered. They are described as well as their solutions below.
 
 You can also read the `pyproject.toml` provided by this cookiecutter to see
@@ -269,38 +285,26 @@ This is how the new project will be organized.
     ├── settings.toml             <- Project's settings used by `dynaconf`.
     ├── .secrets.toml             <- Secret settings used by `dynaconf`.
     ├── README.md                 <- The top-level README for developers using this project.
-    ├── data                      <- Data directories used throughout the project.
-    │   ├── raw                   <- The original, immutable data dump.
-    │   ├── temp                  <- Temporary folder. These files can be deleted.
     ├── docs                      <- GitHub pages website.
     │   ├── explanation.md        <- Understanding-oriented documentation.
     │   ├── how-to-guides.md      <- Problem-oriented documentation.
     │   ├── index.md              <- The index page for the whole documentation.
     │   ├── reference.md          <- Information-oriented documentation.
-    │   └── tutorials.md          <- Learning-oriented documentation.
-    ├── notebooks                 <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │   │                            the creator's initials, and a short `_` delimited description, e.g.
-    │   │                            `01_fl_exploratory_data_analysis.ipynb`.
-    │   ├── data                  <- Data used by notebooks.
-    │   └── viz                   <- Visualizations such as plots, figures and tables used by notebooks.
-    ├── reports                   <- Reports, usually in markdown or other formats (pdf, html, etc.).
-    │   ├── data                  <- Data used in reporting.
-    │   └── viz                   <- Visualizations such as plots, figures and tables used in reporting.
+    │   ├── tutorials.md          <- Learning-oriented documentation.
+    |   └── ...
+    |
     ├── src                       <- Store the source code.
-    │   ├── cli.py                <- The main CLI entry point, used to call `main.py`.
-    │   ├── main.py               <- The main flow (pipeline) to dispatch the subflows.
-    │   ├── helpers               <- Utilities and helper codes.
-    │   │   ├── __init__.py
-    |   ├── etl                   <- Code to extract, transform and load the raw data.
-    │   │   ├── __init__.py
+    │   └── {{<package>}}         <- Package code folder.
+    │       ├── __init__.py
+    │       ├── {{<package>}}.py  <- Main code file.
+    |       └── ...
     └── tests                     <- All test and fixtures files used in testing.
         ├── __init__.py
         ├── fixtures              <- Where to put example inputs and outputs.
         │   ├── input.json        <- Test input data.
         │   └── output.json       <- Test output data.
-        ├── test_config           <- Test the project's settings.
-        ├── test_etl              <- Test example on `etl.py`.
-        └── test_samples.py       <- Test example to verify `pytest`.
+        ├── test_samples.py       <- Test example to verify `pytest`.
+        └── ...
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [Hypermodern Python cookiecutter]: https://cookiecutter-hypermodern-python.readthedocs.io/en/2020.6.15/index.html
