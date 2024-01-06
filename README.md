@@ -10,7 +10,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 ![Pre-commit](https://img.shields.io/badge/precommit-2.20.0-blue)
 <!-- badges: end -->
 
-Cookiecutter for simple projects by Ephel. This cookiecutter tries to use
+Cookiecutter for simple packages by Ephel. This cookiecutter tries to use
 the most modern Python setup without the full complexity of [Hypermodern Python cookiecutter].
 
 ## Features
@@ -20,11 +20,6 @@ the most modern Python setup without the full complexity of [Hypermodern Python 
 This cookiecutter proposes a workflow organized with [directory structure](#directory-structure).
 
 The overall choices of packages is inspired from [Hypermodern Python cookiecutter].
-
-This data science project template is inspired from [cookiecutter-modern-datascience]
-for the directory structure.
-
-The cookiecutter [data-science-template] by Khuyen Tran was also very much used.
 
 ## Quickstart
 
