@@ -5,10 +5,10 @@
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen)](https://lifecycle.r-lib.org/articles/stages)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/python-^3.10-blue)](https://www.python.org/downloads/release/python-3106/)
-[![cooliecutter](https://img.shields.io/badge/cookiecutter-2.1.1-blueviolet)](https://cookiecutter.readthedocs.io/en/stable/)
-[![Poetry](https://img.shields.io/badge/poetry-1.1.15-purple)](https://pypi.org/project/poetry/)
-[![Black](https://img.shields.io/badge/codestyle-black-black)](https://pypi.org/project/black/)
-[![Pre-commit](https://img.shields.io/badge/precommit-3.5.0-orange)](https://pypi.org/project/pre-commit/)
+[![cookiecutter](https://img.shields.io/badge/cookiecutter-2.1.1-blueviolet)](https://cookiecutter.readthedocs.io/en/stable/)
+[![Poetry](https://img.shields.io/badge/poetry-^1.7.1-purple)](https://pypi.org/project/poetry/)
+[![Ruff](https://img.shields.io/badge/ruff-^0.2.2-maroon)](https://docs.astral.sh/ruff/)
+[![Pre-commit](https://img.shields.io/badge/precommit-^3.5.0-orange)](https://pypi.org/project/pre-commit/)
 <!-- badges: end -->
 
 Cookiecutter for simple packages by Ephel. This cookiecutter tries to use
@@ -21,6 +21,7 @@ the most modern Python setup without the full complexity of [Hypermodern Python 
 This cookiecutter proposes a workflow organized with [directory structure](#directory-structure).
 
 The overall choices of packages is inspired from [Hypermodern Python cookiecutter].
+The cookiecutter [data-science-template] by Khuyen Tran was also very useful.
 
 ## Quickstart
 
@@ -55,7 +56,7 @@ with
 
     poetry --version.
 
-Also, in case of bug verify which environment and python version `poetry` is
+Also, in case of bug, verify which environment and python version `poetry` is
 using. Usually, different environments used by different python version
 create problems with `poetry``.
 
@@ -67,15 +68,15 @@ and to see the list of environment available
 
     poetry env list
 
-Run `poetry shell` to open the poetry shell and avoid having to always add
-`poetry run`in front of all commands
-
-    poetry shell
-
 Sometimes, especially when reusing a folder that had been used as a project
 before, the old environment is still used. To delete the old environment use
 
     poetry env remove <python>
+
+Run `poetry shell` to open the poetry shell and avoid having to always add
+`poetry run`in front of all commands
+
+    poetry shell
 
 #### Usage
 
@@ -110,7 +111,7 @@ Then initialize git using
 
 ### Step 4 Add the ignored directories (optional for packages)
 
-Some directories, such as the `data/`, are included in `.gitignore` and therefoer
+Some directories, such as the `data/`, are included in `.gitignore` and therefore
 ignored by the cookicutter which is coming from `git`. Run `make` to add these
 extra directories. The most usual one is `data`.
 
@@ -120,28 +121,36 @@ extra directories. The most usual one is `data`.
 
 Once `.git` is setup, make sure to include the pre-commit script in `.git`
 by running `pre-commit install` from the poetry shell. Also `pre-commit update`
-ensures that the `black`, `flake8` etc. are up-to-date. Sometimes warnings
-appear about the 'rev' field being mutable, using this `pre-commit update`
+ensures that the `ruff` is up-to-date. Sometimes warnings
+appear about the 'rev' field being mutable, using `pre-commit update`
 usually resolves this.
 
 These steps are encoded in the Makefile and can be run as follows
 
-    make pre_commit
+    make precommit
 
 It is also a good idea to run the hooks against all files when adding a new hook
 
     pre-commit run --all-files
+
+wich is encoded in the MakeFile with the command
+
+    make precommit_run
 
 ### Step 6 Verify the features
 
 It is also useful to test the features of the new project before embarking
 in the coding.
 
-#### Code source format and check
+#### Code source linter and formatter
 
-To run `isort` and `flake8` and verify all is in order run this make command
+To run the linter from `ruff check .` use the command
 
     make lint
+
+To run the code formatter from `ruff format .` use the command
+
+    make format
 
 #### Create the documentation with `mkdocs`
 
@@ -160,8 +169,6 @@ As a result, the following command which must be run
 Then you update the documentation with
 
     mkdocs build
-
-There is more information at [real python] on using `mkdocs`.
 
 **Important:**
 
@@ -182,36 +189,19 @@ To validate the package is in the windows environment run
 
     pip list
 
-Also you need to modify the project's `pyproject.toml` file to allow `poerty`
-touse it in its environnment as follow
+Also you need to modify the project's `pyproject.toml` file to allow `poetry`
+to use it in its environnment as follow
 
     [tool.poetry.dev-dependencies]
     igclib = {path = "../path/package", develop = true}
 
-## Setup notes
+## Help notes
 
 Some configurations needed to be changed when problems
 were encountered. They are described as well as their solutions below.
 
 You can also read the `pyproject.toml` provided by this cookiecutter to see
 info on the required changes.
-
-### `flake8`
-
-`flake8` reports error **E501** for lines exceeding the 79 length limit
-recommended by PIP-8. Even when `black` is ok with it and even when all lines
-are properly formatted and abide by the rule.
-
-Several hours were spent trying to fix it. The solution used here is
-as follows:
-
-* Modify `pyproject.toml` to include a section **tools.flake8** to tell
-`flake8` to ignore E501 with `ignore=E501`.
-* Add the plugin `flake8-pyproject` to the **tool.poetry.dependencies** section
-of `pyproject.toml` because `flake8` does not use the `pyproject.toml` except
-when the `flake8-pyproject` is installed.
-* Modify `.pre-commit-config.yaml` to add `args: [--ignore=E501]` to the
-flake8 hook.
 
 ### `pyarrow`
 
@@ -240,15 +230,12 @@ The primary libraries used are described in sections as follows:
 
 |Library|Description|
 |:-----|:-----------------|
-|[flake8]|Style guide enforcement|
-|[pep8-naming]|Check PEP-8 naming conventions, plugin for `flake8`|
-|[black]|Code formatter|
+|[ruff]|Fast (very) Python linter and code formatter, written in Rust.|
 |[pre-commit]|Manage pre-commit hooks|
 |[pre-commit-hooks]|Some out-of-the-box hooks for `pre-commit`|
 |[pytest]|Framework for testing|
 |[mypy]|Static type checker|
 |[typeguard]|Type checking for functions|
-|[isort]|Sort imports and separate them into sections and types|
 
 ### Documentation
 
@@ -262,12 +249,12 @@ The primary libraries used are described in sections as follows:
 
 |Library|Description|
 |:-----|:-----------------|
-|[dynaconf]|Settings management|
 |[rich]|Writing rich text to the terminal and display advanced content|
+|[typer]|Typer, build great CLIs|
+|[dynaconf]|Settings management|
 |[tomli]|A lil' TOML parser|
 |[requests]|HTTP library for Python|
-|[prefect]|Manage the dataflow|
-|[pandas]|Data analysis and manipulaiton tool|
+|[pandas]|Data analysis and manipulation tool|
 |[numpy]|Scientific computing|
 |[pyodbc]|Access ODBC database|
 |[SQLAlchemy]|SQL toolkit and object relational mapper|
@@ -309,27 +296,22 @@ This is how the new project will be organized.
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [Hypermodern Python cookiecutter]: https://cookiecutter-hypermodern-python.readthedocs.io/en/2020.6.15/index.html
-[cookiecutter-modern-datascience]: https://github.com/crmne/cookiecutter-modern-datascience
 [data-science-template]: https://github.com/khuyentran1401/data-science-template
-[real python]: https://realpython.com/python-project-documentation-with-mkdocs/
 [poetry]: https://pypi.org/project/poetry/
-[flake8]: https://pypi.org/project/flake8/
-[pep8-naming]: https://pythonfix.com/pkg/p/pep8-naming/
-[black]: https://pypi.org/project/black/
+[ruff]: https://docs.astral.sh/ruff/
 [pre-commit]: https://pypi.org/project/pre-commit/
 [pre-commit-hooks]: https://github.com/pre-commit/pre-commit-hooks
 [pytest]: https://pypi.org/project/pytest/
 [mypy]: http://www.mypy-lang.org
 [typeguard]: https://typeguard.readthedocs.io/en/latest/
-[isort]: https://github.com/PyCQA/isort
 [MkDocs]: https://www.mkdocs.org
 [mkdocstrings]: https://mkdocstrings.github.io
 [mkdocstrings-python]: https://mkdocstrings.github.io/python/
 [dynaconf]: https://www.dynaconf.com
 [rich]: https://rich.readthedocs.io/en/stable/introduction.html
+[typer]: https://typer.tiangolo.com
 [tomli]: https://pypi.org/project/tomli/
 [requests]: https://requests.readthedocs.io/en/latest/
-[prefect]: https://docs.prefect.io
 [pandas]: https://pandas.pydata.org
 [numpy]: https://numpy.org
 [pyodbc]: https://pypi.org/project/pyodbc/
