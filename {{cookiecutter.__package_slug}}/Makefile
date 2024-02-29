@@ -31,31 +31,23 @@ poetry_update:
 	@echo -e "\x1b[1;32mpoetry show ok!\x1b[0m"
 	@echo -e "\x1b[1;36mcompleted successfully!\x1b[0m"
 
-pre_commit:
+precommit:
 	pre-commit install
 	@echo -e "\x1b[1;32mpre-commit install ok!\x1b[0m"
 	pre-commit autoupdate
 	@echo -e "\x1b[1;32mpre-commit autoupdate ok!\x1b[0m"
 	@echo -e "\x1b[1;36mcompleted successfully!\x1b[0m"
 
-pre_commit_run:
+precommit_run:
 	pre-commit run --all-files
 
+lint:
+	ruff check .
+	@echo -e "\x1b[1;32mlint completed successfully with ruff!\x1b[0m"
 
-lint: isort black flake
-	@echo -e "\x1b[1;36mcompleted successfully!\x1b[0m"
-
-isort:
-	isort .
-	@echo -e "\x1b[1;32misort ok!\x1b[0m"
-
-black:
-	black src/
-	@echo -e "\x1b[1;32mblack ok!\x1b[0m"
-
-flake:
-	flake8 --ignore=E501
-	@echo -e "\x1b[1;32mflake8 ok!\x1b[0m"
+format:
+	ruff format .
+	@echo -e "\x1b[1;32mformat completed successfully with ruff!\x1b[0m"
 
 git_init:
 	# initialize git_repo
@@ -67,6 +59,12 @@ git_init:
 	git push -u -f origin main
 	@echo -e "\x1b[1;32mgit initialized successfully!\x1b[0m"
 	@echo -e "\x7"
+
+ignored_dir:
+	# create data dir which are in the cookicutter because of .gitignore
+	mkdir -p data\temp
+	mkdir -p data\raw
+	@echo -e "\x1b[1;32mIgnored directories created successfully!\x1b[0m"
 
 test:
 	@echo -e "\x1b[1;37mThis is a test\x1b[0m"
