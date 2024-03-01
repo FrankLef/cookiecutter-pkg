@@ -263,7 +263,7 @@ This is how the new project will be organized.
     ├── src                       <- Store the source code.
     │   └── {{<package>}}         <- Package code folder.
     │       ├── __init__.py
-    │       ├── {{<package>}}.py  <- Main code file.
+    │       ├── main.py           <- Main code file.
     |       └── ...
     └── tests                     <- All test and fixtures files used in testing.
         ├── __init__.py
