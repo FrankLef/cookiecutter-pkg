@@ -189,6 +189,22 @@ for backward compatibility. `pyarrow` should be installed with
 `pip3 install pyarrow` in the local python. Don't install `pyarrow` with
 `poetry add pyarrow` or you will get a whole lot of cryptic errors.
 
+## Install and use the package
+
+Assume all of the above went well and the packages contains features ready to
+be used by projects or other python packages.
+
+Follow the following steps to share the package
+
+### Step 1 Install the package
+
+`poetry install` install the package in *editable mode*. That is it install
+a link to the package on the computer rather than as an independent piece of
+software. This is very useful to make the code available as soon as it is
+modified when it is imported again.
+
+    poetry install
+
 ## Libraries Used
 
 The primary libraries used are described in sections as follows:
