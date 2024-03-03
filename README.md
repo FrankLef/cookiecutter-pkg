@@ -197,8 +197,8 @@ for the package to work.
 
 These problems are
 
-    1. Wrong interpreter used by Visual Studio Code
-    2. Poetry virtual environment is desynchronized
+1. Wrong interpreter used by Visual Studio Code
+2. Poetry virtual environment is desynchronized
 
 #### Visual Studio Code environment
 
