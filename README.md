@@ -179,12 +179,12 @@ Just run the make command as above
     make poetry_update
 
 Every thing should work fine now.  However, it is not rare that the following
-exception shows up again
+exception shows up
 
     Import "mypkg" could not be resolved Pylance(reportMissingImports)
 
-**See the section [reportMissingImports](#Help-reportMissingImports) below on
-how to solve this common problem.**
+See the section [Help reportMissingImports](#help-reportmissingimports) below
+on how to solve this common problem.
 
 ### Help reportMissingImports
 
@@ -193,7 +193,9 @@ When this error happens
     Import "mypkg" could not be resolved Pylance(reportMissingImports)
 
 It is usually because of 2 different problems. **Both problems must be resolved**
-for the package to work in
+for the package to work.
+
+These problems are
 
     1. Wrong interpreter used by Visual Studio Code
     2. Poetry virtual environment is desynchronized
@@ -226,18 +228,22 @@ environment
 
     poetry env info
 
-then you reset it by deleting the `poetry.lock' and the virutal environment as
+and verify that your package is in the environment
+
+    poetry env show
+
+then you reset it by deleting the `poetry.lock` and the virtual environment as
 follows
 
-    del poetry.lock
-    poetry env remove test-O3eWbxRl-py3.7
+    rm poetry.lock
+    poetry env remove test-O3eWbxRl-py3.7 (example environment)
 
 and you rebuild them by **updating poetry**
 
     poetry update
 
-After that usually it all works fine.  You can always verify that your local
-package is in the virtual environment with
+After that, usually, it all works fine.  You should verify again that your
+local package is in the virtual environment with
 
     poetry show
 
