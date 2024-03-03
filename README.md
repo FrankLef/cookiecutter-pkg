@@ -57,7 +57,7 @@ all commands
 
     poetry shell
 
-Run the `make` command `poetry_update`.
+Run the `make` command `poetry_update`. To update the virutal environment.
 
     make poetry_update
 
@@ -130,6 +130,117 @@ directories.
 
     make ignored_dir
 
+## Install and use the package
+
+Assume all of the above went well and the packages contains features ready to
+be used by projects or other python packages.
+
+The do the 2 steps below to use the package in some other project/package.
+
+For illustration we assume we have a package called 'mypkg' located in
+
+    C:/Users/Public/MyPy/Packages/mypckg
+
+### Step 1 Install the package
+
+`poetry install` install the package in *editable mode*. That is it install
+a link to the package on the computer rather than as an independent piece of
+software. This is very useful to make the code available as soon as it is
+modified when it is imported again.
+
+You must be in the the package 'mypckg' located in
+'C:/Users/Public/MyPy/Packages/mypckg'
+
+    poetry install
+
+### Step 2 Use the package in a project
+
+To use the packge in a project you simply need to do the following steps *when
+you are in the project that needs to use the package*
+
+#### Modify `pyproject.toml`
+
+Change the '[tool.poetry]' section with
+
+[tool.poetry]
+packages = [
+    {include = "mypkg", from = "C:/Users/Public/MyPy/Packages/mypkg"},
+    ]
+
+Change the '[tool.poetry.dependencies]' section with
+
+[tool.poetry.dependencies]
+mypkg = {path = "C:/Users/Public/MyPy/Packages/mypkg", develop = true}
+
+#### Update the poetry virtual environment
+
+Just run the make command as above
+
+    make poetry_update
+
+Every thing should work fine now.  However, it is not rare that the following
+exception shows up again
+
+    Import "mypckg" could not be resolved Pylance(reportMissingImports)
+
+**See the section [reportMissingImports](Help-reportMissingImports) below on
+how to solve this common problem.**
+
+### Help reportMissingImports
+
+When this error happens
+
+    Import "mypckg" could not be resolved Pylance(reportMissingImports)
+
+It is usually because of 2 different problems. **Both problems must be resolved
+for the package to work in
+
+    1. Wrong interpreter used by Visual Studio Code
+    2. Poetry virtual environment is desynchronized
+
+#### Visual Studio Code environment
+
+This problem was resolved in [satck overflow](https://stackoverflow.com/questions/71229685/packages-installed-with-poetry-fail-to-import)
+
+Verify the current environment you use
+
+    poetry env info
+
+and use `Ctrl+Shift P` to get `Python: Select Interpreter` to select your
+environment identified by `poetry env info`.
+
+This will tell VS Code to use the right environment to access the package
+installed locally.
+
+#### Desynchronized virtual environment
+
+To manage the `poetry` environments, see the available commands at
+[poetry](https://python-poetry.org/docs/managing-environments/). Also there is
+some good tips at [Frank Mich](https://blog.frank-mich.com/poetry-explanations-and-tips/).
+
+Sometimes the virtual environment is not synchronized with what is in
+`pyproject.toml` and `poetry.lock`.
+
+First you should have a look at your environment to see what is your active
+environment
+
+    poetry env info
+
+then you reset it by deleting the `poetry.lock' and the virutal environment as
+follows
+
+    del poetry.lock
+    poetry env remove test-O3eWbxRl-py3.7
+
+and you rebuild them by **updating poetry**
+
+    poetry update
+
+After that usually it all works fine.  You can always verify that your local
+package is in the virtual environment with
+
+    poetry show
+
 ## Help notes
 
 This section gives more details for reference and also to help solve problems
@@ -188,22 +299,6 @@ Use `pyarrow.feather` instead of `feather-format`, `feather.format` exists only
 for backward compatibility. `pyarrow` should be installed with
 `pip3 install pyarrow` in the local python. Don't install `pyarrow` with
 `poetry add pyarrow` or you will get a whole lot of cryptic errors.
-
-## Install and use the package
-
-Assume all of the above went well and the packages contains features ready to
-be used by projects or other python packages.
-
-Follow the following steps to share the package
-
-### Step 1 Install the package
-
-`poetry install` install the package in *editable mode*. That is it install
-a link to the package on the computer rather than as an independent piece of
-software. This is very useful to make the code available as soon as it is
-modified when it is imported again.
-
-    poetry install
 
 ## Libraries Used
 
