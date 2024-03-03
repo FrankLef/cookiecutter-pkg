@@ -81,7 +81,7 @@ Then initialize git using
 
 ### Step 4 Install `pre-commit`
 
-See the [help pre-commit](help-pre-commit-update) for details.
+See the [help pre-commit](#help-pre-commit-update) for details.
 
 Setup and update `pre-commit`
 
@@ -183,7 +183,7 @@ exception shows up again
 
     Import "mypkg" could not be resolved Pylance(reportMissingImports)
 
-**See the section [reportMissingImports](Help-reportMissingImports) below on
+**See the section [reportMissingImports](#Help-reportMissingImports) below on
 how to solve this common problem.**
 
 ### Help reportMissingImports
