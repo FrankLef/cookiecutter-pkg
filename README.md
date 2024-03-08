@@ -25,7 +25,10 @@ repo name, project name, etc.
 
 ### Step 1 Setup the project structure with `cookiecutter`
 
-> **Important note on the package name**: When using underscore in a pckage
+The rules for package names seem to be very strict in `poetry`. Please read the
+following to avoid a lot of frustrating experiences.
+
+> **Important note on the package name**: When using underscore in a package
 name, `poetry` replaces underscore with dashes internally. Yet Python does not
 recognize package name with a dash in script.  I have spent a lot ot time
 trying to fix this. So my current standard is to use a **fullname** such as
