@@ -36,7 +36,7 @@ and, also, pay attention to the following
 > **Important note on the package name, again!**: Only use lowercase names.
 For some reason `poetry` dows not recognise `todoPkg` when updating! It only
 works with `todopkg`. Something is weird here but I can't find what it is or if
-this actually a normal behavior from `poetry`.
+this is a normal constraint with `poetry`.
 
 Change to the parent location where you want the project to be created.
 For example if your project is called `todopkg` in the `parent` folder,
