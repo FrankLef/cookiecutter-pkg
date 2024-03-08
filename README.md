@@ -25,11 +25,18 @@ repo name, project name, etc.
 
 ### Step 1 Setup the project structure with `cookiecutter`
 
-> **Important note on the pakage name**: When using underscore in a pckage
+> **Important note on the package name**: When using underscore in a pckage
 name, `poetry` replaces underscore with dashes internally. Yet Python does not
 recognize package name with a dash in script.  I have spent a lot ot time
 trying to fix this. So my current standard is to use a **fullname** such as
 `todopkg` instead of `todo-pkg` or `todo_pkg`.
+
+and, also, pay attention to the following
+
+> **Important note on the package name, again!**: Only use lowercase names.
+For some reason `poetry` dows not recognise `todoPkg` when updating! It only
+works with `todopkg`. Something is weird here but I can't find what it is or if
+this actually a normal behavior from `poetry`.
 
 Change to the parent location where you want the project to be created.
 For example if your project is called `todopkg` in the `parent` folder,
