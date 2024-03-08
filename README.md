@@ -25,8 +25,14 @@ repo name, project name, etc.
 
 ### Step 1 Setup the project structure with `cookiecutter`
 
+> **Important note on the pakage name**: When using underscore in a pckage
+name, `poetry` replaces underscore with dashes internally. Yet Python does not
+recognize package name with a dash in script.  I have spent a lot ot time
+trying to fix this. So my current standard is to use a **fullname** such as
+`todopkg` instead of `todo-pkg` or `todo_pkg`.
+
 Change to the parent location where you want the project to be created.
-For example if your project is called `flpkg_todo` in the `parent` folder,
+For example if your project is called `todopkg` in the `parent` folder,
 then move to `parent` first
 
     cd ..\parent
@@ -41,7 +47,7 @@ then generate the project
 
 and make the new folder the working directory.
 
-    cd ..\parent\flpkg_todo
+    cd ..\parent\todopkg
 
 ### Step 2 Manage the dependencies with `poetry`
 
@@ -67,9 +73,7 @@ Run the `make` command `poetry_update`. To update the virutal environment.
 
 First create the new repo in github
 
-* **Give the repo the exact same name as the project**. That is keep the
-underscore in the name when there one. i.e. `flproj_todo` is also `flproj_todo`
-in github.
+* **Give the repo the exact same name as the package**.
 * Don't create `README`, `.gitignore` and `LICENSE`. They will be created by
 the cookiecutter.
 
@@ -135,11 +139,11 @@ directories.
 Assume all of the above went well and the packages contains features ready to
 be used by projects or other python packages.
 
-Then do the 2 steps below to use the package in some other project/package.
+Then do the 2 steps below to use the package in some other project or package.
 
-For illustration we assume we have a package called 'mypkg' located in
+For illustration we assume we have a package called 'todopkg' located in
 
-    C:/Users/Public/MyPy/Packages/mypkg
+    C:/Users/Public/MyPy/Packages/todopkg
 
 ### Step 1 Install the package
 
@@ -148,8 +152,8 @@ a link to the package on the computer rather than as an independent piece of
 software. This is very useful to make the code available as soon as it is
 modified when it is imported again.
 
-You must be in the the package 'mypkg' located in
-'C:/Users/Public/MyPy/Packages/mypkg'
+You must be in the the package 'todopkg' located in
+'C:/Users/Public/MyPy/Packages/todopkg'
 
     poetry install
 
@@ -164,13 +168,13 @@ Change the '[tool.poetry]' section with
 
     [tool.poetry]
     packages = [
-    {include = "mypkg", from = "C:/Users/Public/MyPy/Packages/mypkg"},
+    {include = "todopkg", from = "C:/Users/Public/MyPy/Packages/todopkg"},
     ]
 
 Change the '[tool.poetry.dependencies]' section with
 
     [tool.poetry.dependencies]
-    mypkg = {path = "C:/Users/Public/MyPy/Packages/mypkg", develop = true}
+    todopkg = {path = "C:/Users/Public/MyPy/Packages/todopkg", develop = true}
 
 #### Update the poetry virtual environment
 
@@ -181,7 +185,7 @@ Just run the make command as above
 Every thing should work fine now.  However, it is not rare that the following
 exception shows up
 
-    Import "mypkg" could not be resolved Pylance(reportMissingImports)
+    Import "todopkg" could not be resolved Pylance(reportMissingImports)
 
 See the section [Help reportMissingImports](#help-reportmissingimports) below
 on how to solve this common problem.
@@ -190,7 +194,7 @@ on how to solve this common problem.
 
 When this error happens
 
-    Import "mypkg" could not be resolved Pylance(reportMissingImports)
+    Import "todopkg" could not be resolved Pylance(reportMissingImports)
 
 It is usually because of 2 different problems. **Both problems must be resolved**
 for the package to work.
