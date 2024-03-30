@@ -18,7 +18,7 @@ requests = "^2.28.1"
 pandas = "^1.5.0"
 numpy = "^1.23.3"
 pyodbc = "^4.0.34"
-SQLAlchemy = "^1.4.41"
+SQLAlchemy = "^2.0.0"
 # to be able to connect to MS Access databases
 sqlalchemy-access = "^2.0.2"
 # Use pyarrow.feather instead of feather-format,
