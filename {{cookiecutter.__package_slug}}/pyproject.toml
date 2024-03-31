@@ -7,6 +7,7 @@ license = "{{cookiecutter.license}}"
 readme = "README.md"
 homepage = "{{cookiecutter.git_repo}}"
 repository = "{{cookiecutter.git_repo}}"
+packages = [{include = "{{cookiecutter.__package_slug}}", from = "src"}]
 
 [tool.poetry.urls]
 Changelog = "{{cookiecutter.__changelog}}"
@@ -53,6 +54,11 @@ mkdocstrings-python = "^0.7.1"
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q"
+pythonpath = ["src"]
+testpaths = [
+    "tests,
+    "integration",
+]
 
 [tool.ruff]
 # source https://blog.jerrycodes.com/ruff-the-python-linter/
