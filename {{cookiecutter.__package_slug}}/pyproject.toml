@@ -59,7 +59,6 @@ addopts = "-ra -q"
 pythonpath = ["src"]
 testpaths = [
     "tests,
-    "integration",
 ]
 
 [tool.ruff]
