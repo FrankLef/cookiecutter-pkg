@@ -57,7 +57,7 @@ then generate the project
 
 and make the new folder the working directory.
 
-    cd ..\parent\todopkg
+    cd ..\parent\{{cookiecutter.__package_slug}}
 
 ### Step 2 Manage the dependencies with `poetry`
 
@@ -195,7 +195,7 @@ Just run the make command as above
 Every thing should work fine now.  However, it is not rare that the following
 exception shows up
 
-    Import "todopkg" could not be resolved Pylance(reportMissingImports)
+    Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
 
 See the section [Help reportMissingImports](#help-reportmissingimports) below
 on how to solve this common problem.
@@ -204,7 +204,7 @@ on how to solve this common problem.
 
 When this error happens
 
-    Import "todopkg" could not be resolved Pylance(reportMissingImports)
+    Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
 
 It is usually because of 2 different problems. **Both problems must be resolved**
 for the package to work.
@@ -244,7 +244,7 @@ environment
 
 and verify that your package is in the environment
 
-    poetry env show
+    poetry show
 
 then you reset it by deleting the `poetry.lock` and the virtual environment as
 follows
