@@ -1,9 +1,10 @@
 """Main code file"""
-
+from os import getlogin
+from datetime import datetime
 from rich import print
 
 
-def say_hello(name: str = "Ephel") -> str:
+def say_hello(name: str = getlogin()) -> str:
     """Example function to say hello. To be deleted.
 
     Args:
@@ -12,7 +13,9 @@ def say_hello(name: str = "Ephel") -> str:
     Returns:
         str: Hello message.
     """
-    msg = "[cyan]" + " ".join(["\u2139", "Hello", name]) + "[/cyan]"
+    time_stamp = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+    msg = "[cyan]" 
+    + " ".join(["\u2139", "Hello", name + ".", time_stamp]) + "[/cyan]"
     print(msg)
     return msg
 
