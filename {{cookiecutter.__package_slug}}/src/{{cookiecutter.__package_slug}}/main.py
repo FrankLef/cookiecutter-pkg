@@ -4,7 +4,7 @@ from datetime import datetime
 from rich import print
 
 
-def say_hello(name: str = getlogin()) -> str:
+def hello(name: str = getlogin()) -> str:
     """Example function to say hello. To be deleted.
 
     Args:
@@ -15,10 +15,10 @@ def say_hello(name: str = getlogin()) -> str:
     """
     time_stamp = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
     msg = "[cyan]" 
-    + " ".join(["\u2139", "Hello", name + ".", time_stamp]) + "[/cyan]"
+    + " ".join(["\u2139", "Hello", name, ". ", time_stamp]) + "[/cyan]"
     print(msg)
     return msg
 
 
 if __name__ == "__main__":
-    say_hello()
+    hello()
