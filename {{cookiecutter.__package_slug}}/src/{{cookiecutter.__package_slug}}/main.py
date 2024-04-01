@@ -15,7 +15,7 @@ def hello(name: str = getlogin()) -> str:
     """
     time_stamp = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
     msg = "[cyan]" 
-    + " ".join(["\u2139", "Hello", name, ". ", time_stamp]) + "[/cyan]"
+    + " ".join(["\u2139", "Hello", name, time_stamp]) + "[/cyan]"
     print(msg)
     return msg
 
