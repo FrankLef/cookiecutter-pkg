@@ -260,7 +260,7 @@ This is a known issue discussed in [github](https://github.com/python-poetry/poe
 and [stackoverflow](https://stackoverflow.com/questions/69766163/on-windows-why-does-poetry-shell-remove-lose-shell-history-features).
 These threads provide a hack to solve this. I don't use it.
 
-### Help reportMissingImports
+### Help `reportMissingImports`
 
 If this error can still happens
 
@@ -268,7 +268,7 @@ If this error can still happens
 Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
 ```
 
-#### Verify environment first!
+#### Verify environment first
 
 **This is important:** Make sure you are in the virtual environment, otherwise
 pylane will say that the module not found. You can verify the environment in
