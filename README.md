@@ -238,19 +238,31 @@ Just run the make command as above
 make poetry_update
 ```
 
-Every thing should work fine now.  However, it is not rare that the following
-exception shows up
+Every thing should work fine now.
 
-```text
-Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
+### Poetry shell
+
+The package is only useable when you are in the virtual environment.
+If you use the poetry shell with
+
+```console
+poetry shell
 ```
 
-See the section [Help reportMissingImports](#help-reportmissingimports) below
-on how to solve this common problem.
+then you will loose the history in the `cmd` that is usually accessible in
+the 'cmd'. To avoid that, don't start the shell and use
+
+```console
+poetry run python -m src --help
+```
+
+This is a known issue discussed in [github](https://github.com/python-poetry/poetry/issues/5050)
+and [stackoverflow](https://stackoverflow.com/questions/69766163/on-windows-why-does-poetry-shell-remove-lose-shell-history-features).
+These threads provide a hack to solve this. I don't use it.
 
 ### Help reportMissingImports
 
-When this error happens
+If this error can still happens
 
 ```text
 Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
