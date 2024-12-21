@@ -183,7 +183,7 @@ Then do the 2 steps below to use the package in some other project or package.
 
 For illustration we assume we have a package called `pkTodo` located in
 
-```console
+```text
 C:/Users/Public/MyPy/Packages/pkTodo
 ```
 
@@ -194,8 +194,14 @@ a link to the package on the computer rather than as an independent piece of
 software. This is very useful to make the code available as soon as it is
 modified when it is imported again.
 
-You must be in the the package 'pkTodo' located in
-'C:/Users/Public/MyPy/Packages/pkTodo'
+You must be in the the package `pkTodo` located in
+`C:/Users/Public/MyPy/Packages/pkTodo`
+
+```console
+cd ..\parent\{{cookiecutter.__package_slug}}
+```
+
+then you run the poetry install
 
 ```console
 poetry install
