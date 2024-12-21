@@ -32,17 +32,17 @@ following to avoid a lot of frustrating experiences.
 name, `poetry` replaces underscore with dashes internally. Yet Python does not
 recognize package name with a dash in script.  I have spent a lot ot time
 trying to fix this. So my current standard is to use a **fullname** such as
-`todopkg` instead of `todo-pkg` or `todo_pkg`.
+`pkTodo` instead of `pk-todo` or `pk_todo`.
 
 and, also, pay attention to the following
 
 > **Important note on the package name, again!**: Only use lowercase names.
-For some reason `poetry` dows not recognise `todoPkg` when updating! It only
-works with `todopkg`. Something is weird here but I can't find what it is or if
+For some reason `poetry` dows not recognise `pkTodo` when updating! It only
+works with `pkTodo`. Something is weird here but I can't find what it is or if
 this is a normal constraint with `poetry`.
 
 Change to the parent location where you want the project to be created.
-For example if your project is called `todopkg` in the `parent` folder,
+For example if your project is called `pkTodo` in the `parent` folder,
 then move to `parent` first
 
 ```console
@@ -181,10 +181,10 @@ be used by projects or other python packages.
 
 Then do the 2 steps below to use the package in some other project or package.
 
-For illustration we assume we have a package called 'todopkg' located in
+For illustration we assume we have a package called `pkTodo` located in
 
 ```console
-C:/Users/Public/MyPy/Packages/todopkg
+C:/Users/Public/MyPy/Packages/pkTodo
 ```
 
 ### Step 1 Install the package
@@ -194,8 +194,8 @@ a link to the package on the computer rather than as an independent piece of
 software. This is very useful to make the code available as soon as it is
 modified when it is imported again.
 
-You must be in the the package 'todopkg' located in
-'C:/Users/Public/MyPy/Packages/todopkg'
+You must be in the the package 'pkTodo' located in
+'C:/Users/Public/MyPy/Packages/pkTodo'
 
 ```console
 poetry install
@@ -213,7 +213,7 @@ Change the '[tool.poetry]' section with
 ```text
 [tool.poetry]
 packages = [
-{include = "todopkg", from = "C:/Users/Public/MyPy/Packages/todopkg"},
+{include = "pkTodo", from = "C:/Users/Public/MyPy/Packages/pkTodo"},
 ]
 ```
 
@@ -221,7 +221,7 @@ Change the '[tool.poetry.dependencies]' section with
 
 ```text
 [tool.poetry.dependencies]
-todopkg = {path = "C:/Users/Public/MyPy/Packages/todopkg", develop = true}
+pkTodo = {path = "C:/Users/Public/MyPy/Packages/pkTodo", develop = true}
 ```
 
 #### Update the poetry virtual environment
