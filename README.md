@@ -256,8 +256,16 @@ When this error happens
 Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
 ```
 
-It is usually because of 2 different problems. **Both problems must be resolved**
-for the package to work.
+#### Verify environment first!
+
+**This is important:** Make sure you are in the virtual environment, otherwise
+pylane will say that the module not found. You can verify the environment in
+VS Code on the lower right of the apps panel.
+
+#### Environment problems
+
+When the missing module error still come back, it is usually because of 2
+different problems. **Both problems must be resolved** for the package to work.
 
 These problems are
 
