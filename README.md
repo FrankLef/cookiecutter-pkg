@@ -449,6 +449,10 @@ This is how the new project will be organized.
 ├── settings.toml             <- Project's settings used by `dynaconf`.
 ├── .secrets.toml             <- Secret settings used by `dynaconf`.
 ├── README.md                 <- The top-level README for developers using this project.
+├── pypath.bat                <- A batch file to set the PYTHONPATH. Optional.
+├── data                      <- Data directories used throughout the project.
+│   ├── d0_temp               <- Temporary folder. These files can be deleted.
+|   └── ...
 ├── docs                      <- GitHub pages website.
 │   ├── explanation.md        <- Understanding-oriented documentation.
 │   ├── how-to-guides.md      <- Problem-oriented documentation.
