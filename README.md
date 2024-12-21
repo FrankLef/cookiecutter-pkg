@@ -45,19 +45,27 @@ Change to the parent location where you want the project to be created.
 For example if your project is called `todopkg` in the `parent` folder,
 then move to `parent` first
 
-    cd ..\parent
+```console
+cd ..\parent
+```
 
 verify that `cookiecutter` is properly installed by calling its version
 
-    cookiecutter --version
+```console
+cookiecutter --version
+```
 
 then generate the project
 
-    cookiecutter https://github.com/FrankLef/cookiecutter-pkg.git
+```console
+cookiecutter https://github.com/FrankLef/cookiecutter-pkg.git
+```
 
 and make the new folder the working directory.
 
-    cd ..\parent\{{cookiecutter.__package_slug}}
+```console
+cd ..\parent\{{cookiecutter.__package_slug}}
+```
 
 ### Step 2 Manage the dependencies with `poetry`
 
@@ -66,16 +74,22 @@ problem of for more details.
 
 Make sure the poetry version used is at least 1.7.
 
-    poetry --version.
+```console
+poetry --version.
+```
 
 Run `poetry shell` to open the poetry shell and avoid using `poetry run` with
 all commands
 
-    poetry shell
+```console
+poetry shell
+```
 
 Run the `make` command `poetry_update`. To update the virutal environment.
 
-    make poetry_update
+```console
+make poetry_update
+```
 
 ### Step 3 Setup the new `.git`
 
@@ -91,7 +105,9 @@ the cookiecutter.
 
 Then initialize git using
 
-    make git_init
+```console
+make git_init
+```
 
 ### Step 4 Install `pre-commit`
 
@@ -99,11 +115,15 @@ See the [help pre-commit](#help-pre-commit-update) for details.
 
 Setup and update `pre-commit`
 
-    make precommit
+```console
+make precommit
+```
 
 It is also a good idea to run the hooks against all files to verify them.
 
-    make precommit_run
+```console
+make precommit_run
+```
 
 ### Step 5 Verify the features
 
@@ -112,29 +132,37 @@ It is also a good idea to run the hooks against all files to verify them.
 You can also verify that the documentation setup is working by building
 the site.
 
-    mkdocs serve
+```console
+mkdocs serve
+```
 
 This will give you and output like this
 
-    INFO    -  Building documentation...
-    INFO    -  Cleaning site directory
-    INFO    -  Documentation built in 0.11 seconds
-    INFO    -  [09:26:11] Watching paths for changes: 'docs', 'mkdocs.yaml'
-    INFO    -  [09:26:11] Serving on http://127.0.0.1:8000/
-    INFO    -  [09:26:31] Browser connected: http://127.0.0.1:8000/
+```text
+INFO    -  Building documentation...
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 0.11 seconds
+INFO    -  [09:26:11] Watching paths for changes: 'docs', 'mkdocs.yaml'
+INFO    -  [09:26:11] Serving on http://127.0.0.1:8000/
+INFO    -  [09:26:31] Browser connected: http://127.0.0.1:8000/
+```
 
 you can see the resulting documentation by ctrl-click on `http://127.0.0.1:8000/`
 
 and when you are done, you can exit the result with
 
-    ctrl^C
+```console
+ctrl^C
+```
 
 #### Code testing with `pytest`
 
 Finally you can verify that `pytest` is working as expected. Use
 this command wich runs the tests from the `tests` directory.
 
-    pytest
+```console
+pytest
+```
 
 ### Step 6 (optional) Add the ignored directories
 
@@ -142,7 +170,9 @@ Some directories, such as the `\data`, are included in `.gitignore` and
 therefore ignored by the cookicutter. You can run `make` to add these extra
 directories.
 
-    make ignored_dir
+```console
+make ignored_dir
+```
 
 ## Install and use the package
 
@@ -153,7 +183,9 @@ Then do the 2 steps below to use the package in some other project or package.
 
 For illustration we assume we have a package called 'todopkg' located in
 
-    C:/Users/Public/MyPy/Packages/todopkg
+```console
+C:/Users/Public/MyPy/Packages/todopkg
+```
 
 ### Step 1 Install the package
 
@@ -165,7 +197,9 @@ modified when it is imported again.
 You must be in the the package 'todopkg' located in
 'C:/Users/Public/MyPy/Packages/todopkg'
 
-    poetry install
+```console
+poetry install
+```
 
 ### Step 2 Use the package in a project
 
@@ -176,26 +210,34 @@ you are in the project that needs to use the package*
 
 Change the '[tool.poetry]' section with
 
-    [tool.poetry]
-    packages = [
-    {include = "todopkg", from = "C:/Users/Public/MyPy/Packages/todopkg"},
-    ]
+```text
+[tool.poetry]
+packages = [
+{include = "todopkg", from = "C:/Users/Public/MyPy/Packages/todopkg"},
+]
+```
 
 Change the '[tool.poetry.dependencies]' section with
 
-    [tool.poetry.dependencies]
-    todopkg = {path = "C:/Users/Public/MyPy/Packages/todopkg", develop = true}
+```text
+[tool.poetry.dependencies]
+todopkg = {path = "C:/Users/Public/MyPy/Packages/todopkg", develop = true}
+```
 
 #### Update the poetry virtual environment
 
 Just run the make command as above
 
-    make poetry_update
+```console
+make poetry_update
+```
 
 Every thing should work fine now.  However, it is not rare that the following
 exception shows up
 
-    Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
+```text
+Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
+```
 
 See the section [Help reportMissingImports](#help-reportmissingimports) below
 on how to solve this common problem.
@@ -204,7 +246,9 @@ on how to solve this common problem.
 
 When this error happens
 
-    Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
+```text
+Import {{cookiecutter.__package_slug}} could not be resolved Pylance(reportMissingImports)
+```
 
 It is usually because of 2 different problems. **Both problems must be resolved**
 for the package to work.
@@ -220,7 +264,9 @@ This problem was resolved in [stack overflow](https://stackoverflow.com/question
 
 Verify the current environment you use
 
-    poetry env info
+```console
+poetry env info
+```
 
 and use `Ctrl+Shift P` to get `Python: Select Interpreter` to select your
 environment identified by `poetry env info`.
@@ -240,26 +286,36 @@ Sometimes the virtual environment is not synchronized with what is in
 First you should have a look at your environment to see what is your active
 environment
 
-    poetry env info
+```console
+poetry env info
+```
 
 and verify that your package is in the environment
 
-    poetry show
+```console
+poetry show
+```
 
 then you reset it by deleting the `poetry.lock` and the virtual environment as
 follows
 
-    rm poetry.lock
-    poetry env remove test-O3eWbxRl-py3.7 (example environment)
+```console
+rm poetry.lock
+poetry env remove test-O3eWbxRl-py3.7 (example environment)
+```
 
 and you rebuild them by **updating poetry**
 
-    poetry update
+```console
+poetry update
+```
 
 After that, usually, it all works fine.  You should verify again that your
 local package is in the virtual environment with
 
-    poetry show
+```console
+poetry show
+```
 
 ## Help notes
 
@@ -286,11 +342,15 @@ Sometimes, especially when reusing a folder that had been used as a project
 before, the old environment is still used. To see the environment curently
 opened by `poetry` use this
 
-    poetry env list
+```console
+poetry env list
+```
 
 To delete the old environment use this command
 
-    poetry env remove <python>
+```console
+poetry env remove <python>
+```
 
 ### Help pre-commit
 
@@ -307,11 +367,15 @@ usually resolves this.
 No need to run the linter and code formatter separately. Better yet,
 you can run all the pre-commit hooks using this useful command
 
-    pre-commit run --all-files
+```console
+pre-commit run --all-files
+```
 
 wich is encoded in the MakeFile with the command
 
-    make precommit_run
+```console
+make precommit_run
+```
 
 ### `pyarrow`
 
@@ -373,37 +437,39 @@ The primary libraries used are described in sections as follows:
 
 This is how the new project will be organized.
 
-    {{<package_slug>}}
-    ├── .gitignore                <- GitHub's Python `.gitignore` customized for this project.
-    ├── config.py                 <- Script used `dynaconf` to manage settings.
-    ├── pre-commit-config.yaml    <- Settings for `pre-commit`.
-    ├── LICENSE                   <- The project's license.
-    ├── Makefile                  <- Scripts to automate tasks.
-    ├── mkdocs.yaml               <- Settings for `mkdocs`.
-    ├── pyproject.toml            <- Configuration file used by `poetry`.
-    ├── settings.toml             <- Project's settings used by `dynaconf`.
-    ├── .secrets.toml             <- Secret settings used by `dynaconf`.
-    ├── README.md                 <- The top-level README for developers using this project.
-    ├── docs                      <- GitHub pages website.
-    │   ├── explanation.md        <- Understanding-oriented documentation.
-    │   ├── how-to-guides.md      <- Problem-oriented documentation.
-    │   ├── index.md              <- The index page for the whole documentation.
-    │   ├── reference.md          <- Information-oriented documentation.
-    │   ├── tutorials.md          <- Learning-oriented documentation.
-    |   └── ...
-    |
-    ├── src                       <- Store the source code.
-    │   └── {{<package_slug>}}    <- Package code folder.
-    │       ├── __init__.py
-    │       ├── main.py           <- Main code file.
-    |       └── ...
-    └── tests                     <- All test and fixtures files used in testing.
-        ├── __init__.py
-        ├── fixtures              <- Where to put example inputs and outputs.
-        │   ├── input.json        <- Test input data.
-        │   └── output.json       <- Test output data.
-        ├── test_samples.py       <- Test example to verify `pytest`.
-        └── ...
+```text
+{{<package_slug>}}
+├── .gitignore                <- GitHub's Python `.gitignore` customized for this project.
+├── config.py                 <- Script used `dynaconf` to manage settings.
+├── pre-commit-config.yaml    <- Settings for `pre-commit`.
+├── LICENSE                   <- The project's license.
+├── Makefile                  <- Scripts to automate tasks.
+├── mkdocs.yaml               <- Settings for `mkdocs`.
+├── pyproject.toml            <- Configuration file used by `poetry`.
+├── settings.toml             <- Project's settings used by `dynaconf`.
+├── .secrets.toml             <- Secret settings used by `dynaconf`.
+├── README.md                 <- The top-level README for developers using this project.
+├── docs                      <- GitHub pages website.
+│   ├── explanation.md        <- Understanding-oriented documentation.
+│   ├── how-to-guides.md      <- Problem-oriented documentation.
+│   ├── index.md              <- The index page for the whole documentation.
+│   ├── reference.md          <- Information-oriented documentation.
+│   ├── tutorials.md          <- Learning-oriented documentation.
+|   └── ...
+|
+├── src                       <- Store the source code.
+│   └── {{<package_slug>}}    <- Package code folder.
+│       ├── __init__.py       <- The module's initialize file.
+│       ├── __main__.py       <- Main CLI entry point.
+|       └── ...
+└── tests                     <- All test and fixtures files used in testing.
+    ├── __init__.py
+    ├── fixtures              <- Where to put example inputs and outputs.
+    │   ├── input.json        <- Test input data.
+    │   └── output.json       <- Test output data.
+    ├── test_samples.py       <- Test example to verify `pytest`.
+    └── ...
+```
 
 [cookiecutter]: https://github.com/audreyr/cookiecutter
 [Hypermodern-cookiecutter]: https://cookiecutter-hypermodern-python.readthedocs.io/en
