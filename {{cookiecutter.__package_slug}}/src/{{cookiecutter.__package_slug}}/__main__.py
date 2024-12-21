@@ -8,14 +8,14 @@ def hello(name: str = getlogin()) -> str:
     """Example function to say hello. To be deleted.
 
     Args:
-        name (str, optional): Name to use to say hello. Defaults to "Ephel".
+        name (str, optional): Name to use to say hello. Default is current user.
 
     Returns:
         str: Hello message.
     """
     time_stamp = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-    msg = "[cyan]" 
-    + " ".join(["\u2139", "Hello", name, time_stamp]) + "[/cyan]"
+    msg = " ".join(["\u2139", "Hello", name, time_stamp])
+    msg = "[cyan]" + msg + "[/cyan]"
     print(msg)
     return msg
 
