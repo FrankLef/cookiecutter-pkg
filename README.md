@@ -201,7 +201,7 @@ Assuming that the package is called `pkTodo`, you can test the installation
 with the following python script
 
 ```text
-from fltk import hello
+from pkTodo import hello
 
 hello.hello()
 ```
