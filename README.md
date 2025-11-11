@@ -191,9 +191,10 @@ you can verify the reult with
 pip list
 ```
 
-For info see the link the following link
+For info see the link the following links
 
 [InfoWorld Video](https://www.youtube.com/watch?v=06gJBKb-AxQ)
+
 [InfoWorld](https://www.infoworld.com/article/4011198/how-to-use-editable-installs-for-python-packages.html)
 
 
