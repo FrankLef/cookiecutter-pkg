@@ -18,7 +18,7 @@ Changelog = "{{cookiecutter.__changelog}}"
 python = "^3.10.6"
 pyodbc = "^4.0.34"
 SQLAlchemy = "^2.0.0"
-# to be able to connect to MS Access databases
+# sqlalchemy addin to connect to MS Access databases
 sqlalchemy-access = "^2.0.2"
 dynaconf = "^3.1.11"
 rich= "^12.5.1"
