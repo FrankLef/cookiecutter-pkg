@@ -16,25 +16,13 @@ Changelog = "{{cookiecutter.__changelog}}"
 [tool.poetry.dependencies]
 # python changed to allow install of scipy
 python = "^3.10.6"
-requests = "^2.28.1"
-pandas = "^1.5.0"
-numpy = "^1.23.3"
 pyodbc = "^4.0.34"
 SQLAlchemy = "^2.0.0"
 # to be able to connect to MS Access databases
 sqlalchemy-access = "^2.0.2"
-# Use pyarrow.feather instead of feather-format,
-# feather.format exists only fo backward compatibility.
-# pyarrow is better installed with `pip3 install pyarrow` in the local python,
-# don't install pyarrow with poetry add, plenty of error messages ensue.
-pyarrow = "^9.0.0"
 dynaconf = "^3.1.11"
 rich= "^12.5.1"
 typer = "^0.13.1"
-tomli = "^2.0.1"
-matplotlib = "^3.7.0"
-scipy = "^1.10.1"
-seaborn = "^0.12.2"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.1"
@@ -72,8 +60,7 @@ ignore_missing_imports = true
 [[tool.mypy.overrides]]
 module = [
     "ruamel.yaml",
-    "io",
-    "scipy",
+    "io",,
     "dynaconf"
 ]
 ignore_missing_imports = true

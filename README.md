@@ -195,7 +195,7 @@ software. This is very useful to make the code available as soon as it is
 modified when it is imported again.
 
 You must be in the the package `pkTodo` located in
-`C:/Users/Public/MyPy/Packages/pkTodo`
+*C:/Users/Public/MyPy/Packages/pkTodo*
 
 ```console
 cd ..\parent\{{cookiecutter.__package_slug}}
@@ -214,7 +214,7 @@ you are in the project that needs to use the package*
 
 #### Modify `pyproject.toml`
 
-Change the '[tool.poetry]' section with
+Change the *\[tool.poetry\]* section with
 
 ```text
 [tool.poetry]
@@ -223,7 +223,7 @@ packages = [
 ]
 ```
 
-Change the '[tool.poetry.dependencies]' section with
+Change the *\[tool.poetry.dependencies\]* section with
 
 ```text
 [tool.poetry.dependencies]
@@ -242,7 +242,7 @@ Every thing should work fine now.
 
 ### Poetry shell
 
-The package is only useable when you are in the virtual environment.
+**The package is only useable when you are in the virtual environment.**
 If you use the poetry shell with
 
 ```console
@@ -403,13 +403,6 @@ wich is encoded in the MakeFile with the command
 make precommit_run
 ```
 
-### `pyarrow`
-
-Use `pyarrow.feather` instead of `feather-format`, `feather.format` exists only
-for backward compatibility. `pyarrow` should be installed with
-`pip3 install pyarrow` in the local python. Don't install `pyarrow` with
-`poetry add pyarrow` or you will get a whole lot of cryptic errors.
-
 ## Libraries Used
 
 The primary libraries used are described in sections as follows:
@@ -435,7 +428,7 @@ The primary libraries used are described in sections as follows:
 |[pre-commit-hooks]|Some out-of-the-box hooks for `pre-commit`|
 |[pytest]|Framework for testing|
 |[mypy]|Static type checker|
-|[typeguard]|Type checking for functions|
+|[typeguard]|Type checking for functions at runtime|
 
 ### Documentation
 
@@ -452,10 +445,6 @@ The primary libraries used are described in sections as follows:
 |[rich]|Writing rich text to the terminal and display advanced content|
 |[typer]|Typer, build great CLIs|
 |[dynaconf]|Settings management|
-|[tomli]|A lil' TOML parser|
-|[requests]|HTTP library for Python|
-|[pandas]|Data analysis and manipulation tool|
-|[numpy]|Scientific computing|
 |[pyodbc]|Access ODBC database|
 |[SQLAlchemy]|SQL toolkit and object relational mapper|
 
@@ -517,9 +506,5 @@ This is how the new project will be organized.
 [dynaconf]: https://www.dynaconf.com
 [rich]: https://rich.readthedocs.io/en/stable/introduction.html
 [typer]: https://typer.tiangolo.com
-[tomli]: https://pypi.org/project/tomli/
-[requests]: https://requests.readthedocs.io/en/latest/
-[pandas]: https://pandas.pydata.org
-[numpy]: https://numpy.org
 [pyodbc]: https://pypi.org/project/pyodbc/
 [SQLAlchemy]: https://www.sqlalchemy.org
