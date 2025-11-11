@@ -197,6 +197,21 @@ For info see the link the following links
 
 [InfoWorld](https://www.infoworld.com/article/4011198/how-to-use-editable-installs-for-python-packages.html)
 
+Assuming that the package is called `pkTodo`, you can test the installation
+with the following python script
+
+```text
+from fltk import hello
+
+hello.hello()
+```
+
+which should print 'Hello', the user login, the date and time as follows
+
+```console
+ℹ  Hello Ephel 2025-11-11 07:43:22
+```
+
 ## Install and use the package with POETRY
 
 Assume all of the above went well and the packages contains features ready to
