@@ -174,7 +174,30 @@ directories.
 make ignored_dir
 ```
 
-## Install and use the package
+## Install and use the package with PIP
+
+This is the simplest way to install a locally editable package.
+
+Simply run `pip install -e .` in the root directory of the package.
+
+```console
+cd ..\parent\{{cookiecutter.__package_slug}}
+pip install -e .
+```
+
+you can verify the reult with
+
+```console
+pip list
+```
+
+For info see the link the following link
+
+[InfoWorld Video](https://www.youtube.com/watch?v=06gJBKb-AxQ)
+[InfoWorld](https://www.infoworld.com/article/4011198/how-to-use-editable-installs-for-python-packages.html)
+
+
+## Install and use the package with POETRY
 
 Assume all of the above went well and the packages contains features ready to
 be used by projects or other python packages.

@@ -16,7 +16,6 @@ Changelog = "{{cookiecutter.__changelog}}"
 [tool.poetry.dependencies]
 # python changed to allow install of scipy
 python = "^3.10.6"
-pyodbc = "^4.0.34"
 SQLAlchemy = "^2.0.0"
 # sqlalchemy addin to connect to MS Access databases
 sqlalchemy-access = "^2.0.2"
