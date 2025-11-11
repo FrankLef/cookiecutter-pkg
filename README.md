@@ -197,7 +197,6 @@ For info see the link the following links
 
 [InfoWorld](https://www.infoworld.com/article/4011198/how-to-use-editable-installs-for-python-packages.html)
 
-
 ## Install and use the package with POETRY
 
 Assume all of the above went well and the packages contains features ready to
