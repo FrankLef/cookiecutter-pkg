@@ -55,7 +55,7 @@ Verify that `cookiecutter` is properly installed by calling its version.
 cookiecutter --version
 ```
 
-then generate the project with `cookicutter`.
+then generate the project with `cookiecutter`.
 
 ```console
 cookiecutter https://github.com/FrankLef/cookiecutter-pkg.git
