@@ -49,13 +49,14 @@ then move to `parent` first
 cd ..\parent
 ```
 
-verify that `cookiecutter` is properly installed by calling its version
+Verify that `cookiecutter` is properly installed by calling its version.
+The `poetry` version should be **2.0+**
 
 ```console
 cookiecutter --version
 ```
 
-then generate the project
+then generate the project with `cookicutter`.
 
 ```console
 cookiecutter https://github.com/FrankLef/cookiecutter-pkg.git
@@ -72,23 +73,22 @@ cd ..\parent\{{cookiecutter.__package_slug}}
 Don't forget to consult the [help poetry](#help-poetry) section in case of
 problem of for more details.
 
-Make sure the poetry version used is at least 1.7.
+Verify the `poetry`  version, it should be **2.0+**.
 
 ```console
 poetry --version
 ```
 
-Run `poetry shell` to open the poetry shell and avoid using `poetry run` with
-all commands
+Run `poetry update` to update all the libraries.
 
 ```console
-poetry shell
+poetry update
 ```
 
-Run the `make` command `poetry_update`. To update the virutal environment.
+Run `poetry lock` to update the lock file.
 
 ```console
-make poetry_update
+poetry lock
 ```
 
 ### Step 3 Setup the new `.git`
@@ -164,21 +164,12 @@ this command wich runs the tests from the `tests` directory.
 pytest
 ```
 
-### Step 6 (optional) Add the ignored directories
-
-Some directories, such as the `\data`, are included in `.gitignore` and
-therefore ignored by the cookicutter. You can run `make` to add these extra
-directories.
-
-```console
-make ignored_dir
-```
-
 ## Install and use the package with PIP
 
 This is the simplest way to install a locally editable package.
 
 Simply run `pip install -e .` in the root directory of the package.
+Don't forget the "." in `pip install -e .`.
 
 ```console
 cd ..\parent\{{cookiecutter.__package_slug}}
