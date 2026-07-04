@@ -8,7 +8,7 @@ authors = [
 ]
 license = "{{cookiecutter.license}}"
 readme = "README.md"
-requires-python = "{{cookiecutter._requires_py}}"
+requires-python = "{{cookiecutter.__requires_py}}"
 dependencies = [
     "pandas>=3.0.0",
     "numpy>=2.3.4",
