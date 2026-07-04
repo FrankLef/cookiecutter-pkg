@@ -2,12 +2,12 @@
 name = "{{cookiecutter.package_name}}"
 # NOTE: conflict name for 'version', must use specific jinja syntax to resolve.
 version = "{{cookiecutter.version | default('0.1.0')}}"
-description = "{{description}}"
-authors = ["{{author_email}}"]
-license = "{{license}}"
+description = "{{cookiecutter.description}}"
+authors = ["{{cookiecutter.author_email}}"]
+license = "{{cookiecutter.license}}"
 readme = "README.md"
-homepage = "{{git_repo}}"
-repository = "{{git_repo}}"
+homepage = "{{cookiecutter.git_repo}}"
+repository = "{{cookiecutter.git_repo}}"
 # source: https://browniebroke.com/blog/convert-existing-poetry-to-src-layout/
 packages = [{ include = "{{cookiecutter.package_name}}", from = "src" }]
 
