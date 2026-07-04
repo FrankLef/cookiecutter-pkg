@@ -183,7 +183,14 @@ cd ..\parent\{{cookiecutter.__package_slug}}
 pip install -e .
 ```
 
-you can verify the reult with
+you can confirm the package is installed with `pip show`. Assuming the name of
+the package is `pkTodo`.
+
+```console
+pip show pkTodo
+```
+
+If you don't find it, you can scan the list of installed package with
 
 ```console
 pip list
