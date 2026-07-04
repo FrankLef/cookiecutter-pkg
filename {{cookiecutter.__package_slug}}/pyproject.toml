@@ -1,17 +1,17 @@
 [tool.poetry]
-name = "fltk"
-version = "0.1.0"
-description = "Ephel tollkit"
-authors = ["François Lefebvre <flefebvre01@hotmail.com>"]
-license = "MIT"
+name = "{{cookiecutter.package_name}}"
+version = "{{version}}"
+description = "{{description}}"
+authors = ["{{author_email}}"]
+license = "{{license}}"
 readme = "README.md"
-homepage = "https://github.com/FrankLef/fltk.git"
-repository = "https://github.com/FrankLef/fltk.git"
+homepage = "{{git_repo}}"
+repository = "{{git_repo}}"
 # source: https://browniebroke.com/blog/convert-existing-poetry-to-src-layout/
-packages = [{ include = "fltk", from = "src" }]
+packages = [{ include = "{{cookiecutter.package_name}}", from = "src" }]
 
 [tool.poetry.urls]
-Changelog = "https://github.com/FrankLef/fltk.git/releases"
+Changelog = "{{git_repo}}/releases"
 
 [tool.poetry.dependencies]
 # python changed to allow install of scipy
