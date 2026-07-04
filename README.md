@@ -78,6 +78,14 @@ Verify the `poetry`  version, it should be **2.0+**.
 poetry --version
 ```
 
+Verify the `pyproject.toml` and wether it is conistent with `poetry.lock`.
+
+```console
+poetry check
+```
+
+If problems, you can use the following `poetry` commands.
+
 Run `poetry update` to update all the libraries.
 
 ```console
