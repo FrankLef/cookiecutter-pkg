@@ -29,7 +29,7 @@ packages = [{ include = "{{cookiecutter.package_name}}", from = "src" }]
 [project.urls]
 homepage = "{{cookiecutter.git_repo}}"
 repository = "{{cookiecutter.git_repo}}"
-Changelog = "{{cookiecutter.git_repo}}/releases"
+Changelog = "{{cookiecutter._change_log}}"
 
 # [tool.poetry.dependencies]
 # python changed to allow install of scipy
