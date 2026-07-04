@@ -1,6 +1,7 @@
 [tool.poetry]
 name = "{{cookiecutter.package_name}}"
-version = "{{version}}"
+# NOTE: conflict name for 'version', must use specific jinja syntax to resolve.
+version = "{{cookiecutter.version | default('0.1.0')}}"
 description = "{{description}}"
 authors = ["{{author_email}}"]
 license = "{{license}}"
