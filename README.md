@@ -50,7 +50,6 @@ cd ..\parent
 ```
 
 Verify that `cookiecutter` is properly installed by calling its version.
-The `poetry` version should be **2.0+**
 
 ```console
 cookiecutter --version
